@@ -1,9 +1,47 @@
 body {
-  background-color: #345689;
-  color: #cccccc;
+  background-color: #f3f3f3;
+  color: #340f20;
 }
 
 #content {
   width: 600px;
   margin: 0 auto;
+  padding-top: 20px;
+  font-family: 'Poiret One', cursive;
+  font-size: 110%;
+}
+
+#content h1 {
+  text-align: center;
+  font-size: 500%;
+}
+
+#content p {
+  font-weight: 600;
+}
+
+#content li {
+  font-weight: 600;
+}
+
+#prosceniumLeft {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 20%;
+  background-color: #340f20;
+  background: repeating-linear-gradient(90deg, #340f20, #523144 33.33%, white 3%);
+}
+
+#prosceniumRight {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  
+  width: 20%;
+  background-color: #340f20;
+  background: repeating-linear-gradient(270deg, #340f20, #523144 33.33%, white 3%);
 }
