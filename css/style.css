@@ -1,0 +1,9 @@
+body {
+  background-color: #345689;
+  color: #cccccc;
+}
+
+#content {
+  width: 600px;
+  margin: 0 auto;
+}
