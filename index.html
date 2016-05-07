@@ -7,9 +7,13 @@
 
     <title>Voder Speech Synthesizer (1939)</title>
 
-    
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Poiret+One|Limelight' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="icon" sizes="16x16 32x32" href="favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="img/favicon-152.png">
+    <meta name="msapplication-TileColor" content="340f20">
+    <meta name="msapplication-TileImage" content="img/favicon-144.png">
   </head>
 
   <body>
@@ -19,21 +23,22 @@
 
       <h1>The Voder</h1>
 
-      <img src="logo_final.svg" alt="Voder Logo">
+      <img src="img/logo_final.svg" alt="Voder Logo">
 
       <p> The Voder was an early attempt at speech synthesis developed by Bell
-      Telephone Laboratory for the 1939 New York World's Fair. Controlled by
+      Telephone Laboratory for the 1939-40 New York World's Fair. Controlled by
       hand, the operator manually forms each syllable using complex button
       sequences, and it would take about a year of practice to able to produce
       fluid speech. This website allows you to put yourself in the shoes of the
       few women capable of operating the Voder. </p>
 
-      <p>Try create vowel formants using the button combinations below:</p>
+      <p> Try create vowel formants pressing the button combinations below on
+      your keyboard: </p>
 
       <ul>
-        <li>D+V+J: [AH] as in "father"</li>
-        <li>A+K: [EE] as in "heed"</li>
-        <li>A+D: [OO] as in "pool"</li>
+        <li>D + V + J: [AH] as in "father"</li>
+        <li>A + K: [EE] as in "heed"</li>
+        <li>A + D: [OO] as in "pool"</li>
       </ul>
       
       <p> You can also use the spacebar to create unvoiced noise. For example,
@@ -50,10 +55,29 @@
       <button id="button8" type="button">K</button>
       <button id="button9" type="button">L</button>
       <button id="button10" type="button">;</button>
-
       <button id="noise" type="button">Space</button>
 
+
       <script src="js/voder.js"></script>
+
+    </div>
+
+    <div id="footer">
+      <div id="footerContent">
+
+        <img id="footerImage" src="img/console_operator.svg" alt="Woman at Voder Console">
+
+        <h2>Bell System Exhibit</h2>
+        <h2>World's Fair of 1940</h2>
+        <h2>in New York</h2>
+
+        <br/>
+
+        <a href="http://github.com/gmoe/voder"><i class="fa fa-github fa-2x"></i></a>
+        <a href="http://twitter.com/griffin_moe"><i class="fa fa-twitter fa-2x"></i></a>
+        <a href="http://griffinmoe.com/"><i class="fa fa-laptop fa-2x"></i></a>
+
+      </div>
     </div>
 
   </body>

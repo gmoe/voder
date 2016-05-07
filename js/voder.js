@@ -56,14 +56,15 @@
   for(var i=0; i < 8192; i++) {
     data[i] = Math.random();
   }
+  data[0] = (data[0] + data[8191]) / 2;
 
   noise.buffer = buffer;
   noise.loop = true;
 
   var noiseFilter = audioCtx.createBiquadFilter();
-  noiseFilter.type = "lowpass";
-  noiseFilter.frequency.value = 4000;
-  noiseFilter.Q.value = 1;
+  noiseFilter.type = "bandpass";
+  noiseFilter.frequency.value = 5000;
+  noiseFilter.Q.value = 0.5;
 
   var noiseGain = audioCtx.createGain();
   noiseGain.gain.value = 0.0;
