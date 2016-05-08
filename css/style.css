@@ -35,6 +35,13 @@ body {
   height: auto;
 }
 
+#consoleDisplay {
+  width: 100%;
+  height: auto;
+
+  border-bottom: 2px dashed #bda1af;
+}
+
 #footer {
   width: 100%;
   margin-bottom: -10px;
@@ -100,6 +107,10 @@ body {
   }
 
   #content {
+    width: 100%;
+  }
+
+  #footerContent {
     width: 100%;
   }
 }

@@ -3,8 +3,7 @@
 
   var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-  function makeFormant(buttonEle, keyPress, freq) {
-    var button = document.getElementById(buttonEle);
+  function makeFormant(freq) {
 
     var sinOsc = audioCtx.createOscillator();
     sinOsc.type = "sawtooth";
@@ -23,31 +22,20 @@
     bandPass.connect(gainNode);
     gainNode.connect(audioCtx.destination);
 
-
-    function muteOff() {
-      gainNode.gain.value = 0.75;
-    }
-
-    function mute() {
-      gainNode.gain.value = 0.0;
-    }
-
-    button.onmousedown = muteOff;
-    button.onmouseup = mute;
-    window.addEventListener('keydown', function(event) { if(event.key == keyPress) muteOff() } );
-    window.addEventListener('keyup', function(event) { if(event.key == keyPress) mute() } );
+    return gainNode;
   }
 
-  makeFormant("button1", "a", 225);
-  makeFormant("button2", "s", 450);
-  makeFormant("button3", "d", 700);
-  makeFormant("button4", "f", 1000);
-  makeFormant("button5", "v", 1400);
-  makeFormant("button6", "n", 2000);
-  makeFormant("button7", "j", 2700);
-  makeFormant("button8", "k", 3800);
-  makeFormant("button9", "l", 5400);
-  makeFormant("button10", ";", 7500);
+  var formants = {};
+  formants["a"] = makeFormant(225);
+  formants["s"] = makeFormant(450);
+  formants["d"] = makeFormant(700);
+  formants["f"] = makeFormant(1000);
+  formants["v"] = makeFormant(1400);
+  formants["n"] = makeFormant(2000);
+  formants["j"] = makeFormant(2700);
+  formants["k"] = makeFormant(3800);
+  formants["l"] = makeFormant(5400);
+  formants[";"] = makeFormant(7500);
 
   var noise = audioCtx.createBufferSource();
   var buffer = audioCtx.createBuffer(1, 8192, audioCtx.sampleRate);
@@ -69,23 +57,29 @@
   var noiseGain = audioCtx.createGain();
   noiseGain.gain.value = 0.0;
 
-  function noiseMute() {
-    noiseGain.gain.value = 0.0;
-  }
-
-  function noiseMuteOff() {
-    noiseGain.gain.value = 0.75;
-  }
+  formants[" "] = noiseGain;
 
   noise.connect(noiseFilter);
   noiseFilter.connect(noiseGain);
   noiseGain.connect(audioCtx.destination);
   noise.start(0);
 
-  var noiseButton = document.getElementById("noise");
-  noiseButton.onmousedown = noiseMuteOff;
-  noiseButton.onmouseup = noiseMute;
-  window.addEventListener('keydown', function(event) { if(event.key == " ") noiseMuteOff() } );
-  window.addEventListener('keyup', function(event) { if(event.key == " ") noiseMute() } );
+  window.addEventListener('keydown', function(event) {
+    for(var key in formants) {
+      var eventVal = event.key || String.fromCharCode(event.keyCode).toLowerCase();
+      if(eventVal == key) {
+        formants[key].gain.value = 0.75;
+      }
+    }
+  });
+
+  window.addEventListener('keyup', function(event) {
+    for(var key in formants) {
+      var eventVal = event.key || String.fromCharCode(event.keyCode).toLowerCase();
+      if(eventVal == key) {
+        formants[key].gain.value = 0.0;
+      }
+    }
+  });
   
 }());
