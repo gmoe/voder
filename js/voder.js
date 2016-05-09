@@ -3,7 +3,7 @@
 
   var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-  function makeFormant(freq) {
+  function makeFormant(f1, f2) {
 
     var sinOsc = audioCtx.createOscillator();
     sinOsc.type = "sawtooth";
@@ -12,8 +12,8 @@
 
     var bandPass = audioCtx.createBiquadFilter();
     bandPass.type = "bandpass";
-    bandPass.frequency.value = freq;
-    bandPass.Q.value = 4.0;
+    bandPass.frequency.value = (f1+f2)/2;
+    bandPass.Q.value = ((f1+f2)/2) / (f2-f1);
 
     var gainNode = audioCtx.createGain();
     gainNode.gain.value = 0.0;
@@ -26,16 +26,16 @@
   }
 
   var formants = {};
-  formants["a"] = makeFormant(225);
-  formants["s"] = makeFormant(450);
-  formants["d"] = makeFormant(700);
-  formants["f"] = makeFormant(1000);
-  formants["v"] = makeFormant(1400);
-  formants["n"] = makeFormant(2000);
-  formants["j"] = makeFormant(2700);
-  formants["k"] = makeFormant(3800);
-  formants["l"] = makeFormant(5400);
-  formants[";"] = makeFormant(7500);
+  formants["a"] = makeFormant(0, 225);
+  formants["s"] = makeFormant(225, 450);
+  formants["d"] = makeFormant(450, 700);
+  formants["f"] = makeFormant(700, 1000);
+  formants["v"] = makeFormant(1000, 1400);
+  formants["b"] = makeFormant(1400, 2000);
+  formants["h"] = makeFormant(2000, 2700);
+  formants["j"] = makeFormant(2700, 3800);
+  formants["k"] = makeFormant(3800, 5400);
+  formants["l"] = makeFormant(5400, 7500);
 
   var noise = audioCtx.createBufferSource();
   var buffer = audioCtx.createBuffer(1, 8192, audioCtx.sampleRate);

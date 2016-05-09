@@ -5,7 +5,6 @@
   var ctx = canvas.getContext("2d");
 
   var buttonStates = {};
-
   function buttonState(letter) {
     if(buttonStates[letter]) {
       ctx.strokeStyle = "#ff0000";
@@ -47,33 +46,25 @@
     ctx.fillText("Space", 54, 268);
 
     //Right Hand -------------------
-    buttonState("n");
+    buttonState("b");
     ctx.strokeRect(222, 60, 36, 90);
-    ctx.fillText("N", 228, 115);
+    ctx.fillText("B", 234, 115);
+
+    buttonState("h");
+    ctx.strokeRect(262, 30, 36, 90);
+    ctx.fillText("H", 269, 85);
 
     buttonState("j");
-    ctx.strokeRect(262, 30, 36, 90);
-    ctx.fillText("J", 272, 85);
+    ctx.strokeRect(302, 20, 36, 90);
+    ctx.fillText("J", 312, 75);
 
     buttonState("k");
-    ctx.strokeRect(302, 20, 36, 90);
-    ctx.fillText("K", 310, 75);
+    ctx.strokeRect(342, 30, 36, 90);
+    ctx.fillText("K", 352, 85);
 
     buttonState("l");
-    ctx.strokeRect(342, 30, 36, 90);
-    ctx.fillText("L", 350, 85);
-
-    buttonState(";");
     ctx.strokeRect(382, 40, 36, 90);
-    ctx.fillText(";", 394, 95);
-
-    //Right Auxillary --------------
-    ctx.strokeRect(200, 160, 60, 36);
-    ctx.fillText("n/a", 204, 190);
-    ctx.strokeRect(200, 200, 60, 36);
-    ctx.fillText("n/a", 204, 230);
-    ctx.strokeRect(200, 240, 60, 36);
-    ctx.fillText("n/a", 204, 270);
+    ctx.fillText("L", 394, 95);
   }
 
   window.addEventListener('keydown', function(event) {
