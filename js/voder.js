@@ -66,19 +66,17 @@
 
   window.addEventListener('keydown', function(event) {
     for(var key in formants) {
+      if(event.target == document.body) event.preventDefault();
       var eventVal = event.key || String.fromCharCode(event.keyCode).toLowerCase();
-      if(eventVal == key) {
-        formants[key].gain.value = 0.75;
-      }
+      if(eventVal == key) { formants[key].gain.value = 0.75; }
     }
   });
 
   window.addEventListener('keyup', function(event) {
     for(var key in formants) {
+      if(event.target == document.body) event.preventDefault();
       var eventVal = event.key || String.fromCharCode(event.keyCode).toLowerCase();
-      if(eventVal == key) {
-        formants[key].gain.value = 0.0;
-      }
+      if(eventVal == key) formants[key].gain.value = 0.0;
     }
   });
   

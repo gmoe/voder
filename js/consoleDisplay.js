@@ -68,12 +68,14 @@
   }
 
   window.addEventListener('keydown', function(event) {
+    if(event.target == document.body) event.preventDefault();
     var eventVal = event.key || String.fromCharCode(event.keyCode).toLowerCase();
     buttonStates[eventVal] = true;
     requestAnimationFrame(draw);
   });
 
   window.addEventListener('keyup', function(event) {
+    if(event.target == document.body) event.preventDefault();
     var eventVal = event.key || String.fromCharCode(event.keyCode).toLowerCase();
     buttonStates[eventVal] = false;
     requestAnimationFrame(draw);
