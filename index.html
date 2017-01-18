@@ -17,11 +17,11 @@
   </head>
 
   <body>
-    <div id="prosceniumLeft"></div>
-    <div id="prosceniumRight"></div>
+    <div class="proscenium proscenium-left"></div>
+    <div class="proscenium proscenium-right"></div>
     <div id="content">
 
-      <h1>The Voder</h1>
+      <h1 class="site-title">The Voder</h1>
 
       <img src="img/logo_final.svg" alt="Voder Logo">
 
@@ -29,8 +29,13 @@
       Telephone Laboratory for the 1939-40 New York World's Fair. Controlled by
       hand, the operator manually forms each syllable using complex button
       sequences, and it would take about a year of practice to able to produce
-      fluid speech. This website allows you to put yourself in the shoes of the
+      fluid speech. This application allows you to put yourself in the shoes of the
       few women capable of operating the Voder. </p>
+
+      <div class="yt-embed">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/0rAyrmm7vv0" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
 
       <p> Try create vowel formants pressing the button combinations below on
       your keyboard: </p>
@@ -58,17 +63,29 @@
     <div id="footer">
       <div id="footerContent">
 
-        <img id="footerImage" src="img/console_operator.svg" alt="Woman at Voder Console">
+        <img id="footer-console-operator" src="img/console_operator.svg" alt="Woman at Voder Console">
 
         <h2>Bell System Exhibit</h2>
         <h2>World's Fair of 1940</h2>
         <h2>in New York</h2>
 
-        <br/>
-
-        <a href="http://github.com/gmoe/voder"><i class="fa fa-github fa-2x"></i></a>
-        <a href="http://twitter.com/griffin_moe"><i class="fa fa-twitter fa-2x"></i></a>
-        <a href="http://griffinmoe.com/"><i class="fa fa-laptop fa-2x"></i></a>
+        <ul class="footer-contacts">
+          <li>
+            <a href="http://github.com/gmoe/voder">
+              <i class="fa fa-github fa-2x"></i>
+            </a>
+          </li>
+          <li>
+            <a href="http://twitter.com/griffin_moe">
+              <i class="fa fa-twitter fa-2x"></i>
+            </a>
+          </li>
+          <li>
+            <a href="http://griffinmoe.com/">
+              <i class="fa fa-laptop fa-2x"></i>
+            </a>
+          </li>
+        </ul>
 
       </div>
     </div>
