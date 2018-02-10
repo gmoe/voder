@@ -91,8 +91,6 @@ footer {
 }
 
 #footerContent {
-  width: 50%;
-  margin: 0 auto;
   padding-top: 20px;
   padding-bottom: 20px;
 
@@ -125,13 +123,17 @@ footer {
 
 .footer-contacts {
   display: flex;
-  justify-content: space-evenly;
-  padding-left: 25%;
-  padding-right: 25%;
+  justify-content: space-around;
+  padding-left: 40%;
+  padding-right: 40%;
 }
 
 .footer-contacts a {
   display: block;
+}
+
+.footer-contacts a:not(:last-child) {
+  margin-right: 20px;
 }
 
 .proscenium {
@@ -158,11 +160,11 @@ footer {
     display: none;
   }
 
-  #content {
+  main {
     width: 100%;
   }
 
-  #footerContent {
+  footer {
     width: 100%;
   }
 }
