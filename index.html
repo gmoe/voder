@@ -1,95 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Voder Speech Synthesizer (1939)</title>
 
-    <title>Voder Speech Synthesizer (1939)</title>
+  <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="icon" sizes="16x16 32x32" href="favicon.ico">
+  <link rel="apple-touch-icon-precomposed" href="img/favicon-152.png">
+  <meta name="msapplication-TileColor" content="340f20">
+  <meta name="msapplication-TileImage" content="img/favicon-144.png">
+</head>
 
-    <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="icon" sizes="16x16 32x32" href="favicon.ico">
-    <link rel="apple-touch-icon-precomposed" href="img/favicon-152.png">
-    <meta name="msapplication-TileColor" content="340f20">
-    <meta name="msapplication-TileImage" content="img/favicon-144.png">
-  </head>
-
-  <body>
-    <div class="proscenium proscenium-left"></div>
-    <div class="proscenium proscenium-right"></div>
-    <div id="content">
-
-      <h1 class="site-title">The Voder</h1>
-
-      <img src="img/logo_final.svg" alt="Voder Logo">
-
-      <p> The Voder was an early attempt at speech synthesis developed by Bell
-      Telephone Laboratory for the 1939-40 New York World's Fair. Controlled by
-      hand, the operator manually forms each syllable using complex button
-      sequences, and it would take about a year of practice to able to produce
-      fluid speech. This application allows you to put yourself in the shoes of the
-      few women capable of operating the Voder. </p>
-
+<body>
+  <div class="proscenium proscenium-left"></div>
+  <div class="proscenium proscenium-right"></div>
+  <main>
+    <header>
+      <span class="site-title">The Voder</span>
+      <img id="logo" src="img/logo_final.svg" alt="Voder Logo">
+    </header>
+    <section>
+      <p>
+        The Voder was an early attempt at speech synthesis developed by Bell
+        Telephone Laboratory for the 1939-40 New York World's Fair. Controlled
+        by hand, the operator manually forms each syllable using complex button
+        sequences, and it would take about a year of practice to able to
+        produce fluid speech. This application allows you to put yourself in
+        the shoes of the few women capable of operating the Voder.
+      </p>
       <div class="yt-embed">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/0rAyrmm7vv0" frameborder="0" allowfullscreen>
+        <iframe width="560"
+          height="315"
+          src="https://www.youtube.com/embed/0rAyrmm7vv0"
+          frameborder="0"
+          allowfullscreen>
         </iframe>
       </div>
-
-      <p> Try create vowel formants pressing the button combinations below on
-      your keyboard: </p>
-
+      <p>
+        Try create vowel formants pressing the button combinations below on
+        your keyboard:
+      </p>
       <ul>
-        <li>D + V + J: [AH] as in "father"</li>
-        <li>A + K: [EE] as in "heed"</li>
-        <li>A + D: [OO] as in "pool"</li>
+        <li><code>D + V + J</code>: [AH] as in "father"</li>
+        <li><code>A + K</code>: [EE] as in "heed"</li>
+        <li><code>A + D</code>: [OO] as in "pool"</li>
       </ul>
-      
-      <p> You can also use the spacebar to create unvoiced noise. For example,
-      try pressing the spacebar and immediately hit the key sequence for [EE].
-      This will emulate the word "see". </p>
-
+      <p>
+        You can also use the spacebar to create unvoiced noise. For example,
+        try pressing the spacebar and immediately hit the key sequence for [EE].
+        This will emulate the word "see".
+      </p>
       <canvas id="consoleDisplay" width=420 height=320>
         Your browser does not have the necessary support to run this
         application. You might also have Javascript disabled.
       </canvas>
-
-      <script src="js/voder.js"></script>
-      <script src="js/consoleDisplay.js"></script>
-
-    </div>
-
-    <div id="footer">
+    </section>
+    <footer>
       <div id="footerContent">
 
-        <img id="footer-console-operator" src="img/console_operator.svg" alt="Woman at Voder Console">
+        <img id="footer-console-operator"
+          src="img/console_operator.svg"
+          alt="Woman at Voder Console">
 
-        <h2>Bell System Exhibit</h2>
-        <h2>World's Fair of 1940</h2>
-        <h2>in New York</h2>
+        <span class="footer-message">Bell System Exhibit</span>
+        <span class="footer-message">World's Fair of 1940</span>
+        <span class="footer-message">in New York</span>
 
-        <ul class="footer-contacts">
-          <li>
-            <a href="http://github.com/gmoe/voder">
-              <i class="fa fa-github fa-2x"></i>
-            </a>
-          </li>
-          <li>
-            <a href="http://twitter.com/griffin_moe">
-              <i class="fa fa-twitter fa-2x"></i>
-            </a>
-          </li>
-          <li>
-            <a href="http://griffinmoe.com/">
-              <i class="fa fa-laptop fa-2x"></i>
-            </a>
-          </li>
-        </ul>
-
+        <div class="footer-contacts">
+          <a href="http://github.com/gmoe/voder">
+            <span class="fa fa-github fa-2x"></span>
+          </a>
+          <a href="http://twitter.com/griffin_moe">
+            <span class="fa fa-twitter fa-2x"></span>
+          </a>
+          <a href="http://griffinmoe.com/">
+            <span class="fa fa-laptop fa-2x"></span>
+          </a>
+        </div>
       </div>
-    </div>
-
-  </body>
-
+    </footer>
+  </main>
+  <script src="js/voder.js"></script>
+  <script src="js/consoleDisplay.js"></script>
+</body>
 </html>

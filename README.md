@@ -1,4 +1,4 @@
-#Voder Speech Synthesizer (1939)
+# Voder Speech Synthesizer (1939)
 
 The Voder was an early attempt at speech synthesis developed by Bell Telephone
 Laboratory for the 1939 New York World's Fair. Controlled by hand, the operator
