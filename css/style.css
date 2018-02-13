@@ -36,11 +36,34 @@ span.site-title {
   text-align: center;
 }
 
-p, li {
+p, li, dd, dt {
   line-height: 1.7;
 }
 
-p {
+dd, dt {
+  margin-left: 0;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dl {
+  display: -webkit-grid;
+  display: grid;
+  -webkit-grid-template-rows: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  -webkit-grid-auto-flow: column;
+  grid-auto-flow: column;
+  margin-left: 20px;
+}
+
+ol {
+  margin: 0;
+  padding-left: 0;
+}
+
+p, dl {
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -49,12 +72,12 @@ li:not(:last-child) {
   margin-bottom: 10px;
 }
 
-code {
-  background: #ccc;
+kbd {
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 10px;
   padding-right: 10px;
+  background: #ccc;
 }
 
 img#logo {
