@@ -81,6 +81,9 @@
     requestAnimationFrame(draw);
   });
 
-  requestAnimationFrame(draw);
+  // Wait for font file to load
+  setTimeout(function() {
+    requestAnimationFrame(draw);
+  }, 1000);
 
 }());
