@@ -1,10 +1,10 @@
+"use strict";
 (function() {
-  "use strict";
 
-  var canvas = document.getElementById("consoleDisplay");
-  var ctx = canvas.getContext("2d");
+  const canvas = document.getElementById("consoleDisplay");
+  const ctx = canvas.getContext("2d");
 
-  var buttonStates = {};
+  const buttonStates = {};
   function buttonState(letter) {
     if(buttonStates[letter]) {
       ctx.strokeStyle = "#ff0000";
@@ -68,15 +68,15 @@
   }
 
   window.addEventListener('keydown', function(event) {
-    if(event.target == document.body) event.preventDefault();
-    var eventVal = event.key || String.fromCharCode(event.keyCode).toLowerCase();
+    if(event.target === document.body) event.preventDefault();
+    const eventVal = event.key || String.fromCharCode(event.keyCode).toLowerCase();
     buttonStates[eventVal] = true;
     requestAnimationFrame(draw);
   });
 
   window.addEventListener('keyup', function(event) {
-    if(event.target == document.body) event.preventDefault();
-    var eventVal = event.key || String.fromCharCode(event.keyCode).toLowerCase();
+    if(event.target === document.body) event.preventDefault();
+    const eventVal = event.key || String.fromCharCode(event.keyCode).toLowerCase();
     buttonStates[eventVal] = false;
     requestAnimationFrame(draw);
   });

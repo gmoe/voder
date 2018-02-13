@@ -1,21 +1,21 @@
+"use strict";
 (function () {
-  "use strict";
 
-  var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
   function makeFormant(f1, f2) {
 
-    var sinOsc = audioCtx.createOscillator();
+    const sinOsc = audioCtx.createOscillator();
     sinOsc.type = "sawtooth";
-    sinOsc.frequency.value = 220;
+    sinOsc.frequency.value = 110;
     sinOsc.start();
 
-    var bandPass = audioCtx.createBiquadFilter();
+    const bandPass = audioCtx.createBiquadFilter();
     bandPass.type = "bandpass";
     bandPass.frequency.value = (f1+f2)/2;
     bandPass.Q.value = ((f1+f2)/2) / (f2-f1);
 
-    var gainNode = audioCtx.createGain();
+    const gainNode = audioCtx.createGain();
     gainNode.gain.value = 0.0;
 
     sinOsc.connect(bandPass);
@@ -25,7 +25,7 @@
     return gainNode;
   }
 
-  var formants = {};
+  const formants = {};
   formants["a"] = makeFormant(0, 225);
   formants["s"] = makeFormant(225, 450);
   formants["d"] = makeFormant(450, 700);
@@ -37,11 +37,11 @@
   formants["k"] = makeFormant(3800, 5400);
   formants["l"] = makeFormant(5400, 7500);
 
-  var noise = audioCtx.createBufferSource();
-  var buffer = audioCtx.createBuffer(1, 8192, audioCtx.sampleRate);
-  var data = buffer.getChannelData(0);
+  const noise = audioCtx.createBufferSource();
+  const buffer = audioCtx.createBuffer(1, 8192, audioCtx.sampleRate);
+  const data = buffer.getChannelData(0);
 
-  for(var i=0; i < 8192; i++) {
+  for(let i=0; i < 8192; i++) {
     data[i] = Math.random();
   }
   data[0] = (data[0] + data[8191]) / 2;
@@ -49,12 +49,12 @@
   noise.buffer = buffer;
   noise.loop = true;
 
-  var noiseFilter = audioCtx.createBiquadFilter();
+  const noiseFilter = audioCtx.createBiquadFilter();
   noiseFilter.type = "bandpass";
   noiseFilter.frequency.value = 5000;
   noiseFilter.Q.value = 0.5;
 
-  var noiseGain = audioCtx.createGain();
+  const noiseGain = audioCtx.createGain();
   noiseGain.gain.value = 0.0;
 
   formants[" "] = noiseGain;
@@ -65,19 +65,23 @@
   noise.start(0);
 
   window.addEventListener('keydown', function(event) {
-    for(var key in formants) {
-      if(event.target == document.body) event.preventDefault();
-      var eventVal = event.key || String.fromCharCode(event.keyCode).toLowerCase();
-      if(eventVal == key) { formants[key].gain.value = 0.75; }
-    }
+    Object.keys(formants).map((key) => {
+      if(event.target === document.body) event.preventDefault();
+      const eventVal = event.key || String.fromCharCode(event.keyCode).toLowerCase();
+      if(eventVal === key) {
+        formants[key].gain.setTargetAtTime(0.75, audioCtx.currentTime, 0.015);
+      }
+    });
   });
 
   window.addEventListener('keyup', function(event) {
-    for(var key in formants) {
-      if(event.target == document.body) event.preventDefault();
-      var eventVal = event.key || String.fromCharCode(event.keyCode).toLowerCase();
-      if(eventVal == key) formants[key].gain.value = 0.0;
-    }
+    Object.keys(formants).map((key) => {
+      if(event.target === document.body) event.preventDefault();
+      const eventVal = event.key || String.fromCharCode(event.keyCode).toLowerCase();
+      if(eventVal === key) {
+        formants[key].gain.setTargetAtTime(0, audioCtx.currentTime, 0.015);
+      }
+    });
   });
   
 }());
