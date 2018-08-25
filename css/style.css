@@ -26,7 +26,7 @@ section {
   padding-right: 10%;
 }
 
-span.site-title {
+h1.site-title {
   display: block;
   margin-top: 0.4em;
   margin-bottom: 0.4em;
@@ -78,6 +78,7 @@ kbd {
   padding-left: 10px;
   padding-right: 10px;
   background: #ccc;
+  border-radius: 2px;
 }
 
 img#logo {
@@ -104,11 +105,45 @@ img#logo {
   height: 100%;
 }
 
-#consoleDisplay {
-  width: 100%;
-  height: auto;
+#canvas-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  border-bottom: 2px dashed #bda1af;
+#start-audio-overlay {
+  position: absolute;
+  top: 0; right:0; bottom: 0; left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  background: rgba(189, 115, 145, 0.35);
+  border-radius: 4px;
+  animation-duration: 0.35s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes disappear {
+  from { opacity: 1; }
+  to { opacity: 0; display: none; }
+}
+
+#start-audio-btn {
+  z-index: 2;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background: #82344f;
+  color: #f3f3f3;
+  font-size: 22px;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+
+#console-display {
+  margin: 0 auto;
 }
 
 footer {
@@ -138,6 +173,8 @@ footer {
   margin-top: 0.83em;
   margin-bottom: 0.83em;
   font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
 }
 
 #footer-console-operator {

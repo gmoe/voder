@@ -6,6 +6,8 @@
 
   <title>Voder Speech Synthesizer (1939)</title>
 
+  <link rel="preload" as "script" href="js/voder.js">
+  <link rel="preload" as "script" href="js/consoleDisplay.js">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
   <link rel="preload" as="style" href="css/style.css">
   <link rel="stylesheet" href="css/style.css">
@@ -16,12 +18,12 @@
 </head>
 
 <body>
-  <div class="proscenium proscenium-left"></div>
-  <div class="proscenium proscenium-right"></div>
+  <div class="proscenium proscenium-left" aria-hidden="true"></div>
+  <div class="proscenium proscenium-right" aria-hidden="true"></div>
   <main>
     <header>
-      <span class="site-title">The Voder</span>
-      <img id="logo" src="img/logo_final.svg" alt="Voder Logo">
+      <h1 class="site-title">The Voder</h1>
+      <img id="logo" src="img/logo_final.svg" alt="Voder Logo, as seen on the original 1939 World's Fair poster.">
     </header>
     <section>
       <p>
@@ -43,7 +45,9 @@
         operating the Voder.
       </p>
       <div class="yt-embed">
-        <iframe width="560"
+        <iframe
+          title="YouTube embedded video demonstrating the original Voder at the 1939 World's Fair."
+          width="560"
           height="315"
           src="https://www.youtube.com/embed/0rAyrmm7vv0"
           frameborder="0"
@@ -94,30 +98,35 @@
         After you get the hang of the former example, try saying
         "She seesaws" by resequencing some of the formants.
       </p>
-      <canvas id="consoleDisplay" width=420 height=320>
-        Your browser does not have the necessary support to run this
-        application. You might also have Javascript disabled.
-      </canvas>
+      <div id="canvas-container">
+        <canvas id="console-display" width=420 height=320>
+          Your browser does not have the necessary support to run this
+          application. You might also have Javascript disabled.
+        </canvas>
+        <div id="start-audio-overlay">
+          <button id="start-audio-btn">Start</button>
+        </div>
+      </div>
     </section>
     <footer>
       <div id="footerContent">
 
         <img id="footer-console-operator"
           src="img/console_operator.svg"
-          alt="Woman at Voder Console">
+          alt="Illustration of woman at Voder console">
 
         <span class="footer-message">Bell System Exhibit</span>
         <span class="footer-message">World's Fair of 1940</span>
         <span class="footer-message">in New York</span>
 
         <div class="footer-contacts">
-          <a href="http://github.com/gmoe/voder">
+          <a aria-label="Voder source code, hosted on GitHub." href="http://github.com/gmoe/voder">
             <span class="fa fa-github fa-2x"></span>
           </a>
-          <a href="http://twitter.com/griffin_moe">
+          <a aria-label="Griffin Moe's Twitter account." href="http://twitter.com/griffin_moe">
             <span class="fa fa-twitter fa-2x"></span>
           </a>
-          <a href="http://griffinmoe.com/">
+          <a aria-label="Griffin Moe's résumé and personal site." href="http://griffinmoe.com/">
             <span class="fa fa-laptop fa-2x"></span>
           </a>
         </div>
