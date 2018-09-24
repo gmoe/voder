@@ -1,3 +1,7 @@
 *.swp
 *.bak
 *.DS_Store*
+
+# Builds
+dist/
+node_modules/

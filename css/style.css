@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Poiret One';
-  src: url('PoiretOne-Regular.ttf') format('woff'),
-       url('PoiretOne-Regular.woff') format('truetype');
+  src: url('/fonts/PoiretOne-Regular.ttf') format('woff'),
+       url('/fonts/PoiretOne-Regular.woff') format('truetype');
 }
 
 body {
@@ -110,6 +110,12 @@ img#logo {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 320px;
+  cursor: pointer;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 #start-audio-overlay {
@@ -143,7 +149,7 @@ img#logo {
 }
 
 #console-display {
-  margin: 0 auto;
+  width: 100%;
 }
 
 footer {
@@ -185,6 +191,11 @@ footer {
 
   max-width: 100%;
   height: auto;
+
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .footer-contacts {

@@ -6,8 +6,7 @@
 
   <title>Voder Speech Synthesizer (1939)</title>
 
-  <link rel="preload" as "script" href="js/voder.js">
-  <link rel="preload" as "script" href="js/consoleDisplay.js">
+  <link rel="preload" as "script" href="bundle.js">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
   <link rel="preload" as="style" href="css/style.css">
   <link rel="stylesheet" href="css/style.css">
@@ -72,7 +71,7 @@
         inflection and dynamics.
       </p>
       <dl>
-        <dt>She (shē)</dt>
+        <dt>“She (shē)</dt>
         <dd>
           <ol>
             <li><kbd>Space</kbd>: [sh]</li>
@@ -86,7 +85,7 @@
             <li><kbd>D + V + J</kbd>: [ô]</li>
           </ol>
         </dd>
-        <dt>me. (mē)</dt>
+        <dt>me.” (mē)</dt>
         <dd>
           <ol>
             <li><kbd>A</kbd>: [m]</li>
@@ -98,14 +97,14 @@
         After you get the hang of the former example, try saying
         "She seesaws" by resequencing some of the formants.
       </p>
-      <div id="canvas-container">
-        <canvas id="console-display" width=420 height=320>
-          Your browser does not have the necessary support to run this
-          application. You might also have Javascript disabled.
-        </canvas>
-        <div id="start-audio-overlay">
-          <button id="start-audio-btn">Start</button>
-        </div>
+    </section>
+    <section id="canvas-container">
+      <canvas id="console-display" width=420 height=320>
+        Your browser does not have the necessary support to run this
+        application. You might also have Javascript disabled.
+      </canvas>
+      <div id="start-audio-overlay">
+        <button id="start-audio-btn">Start</button>
       </div>
     </section>
     <footer>
@@ -133,7 +132,6 @@
       </div>
     </footer>
   </main>
-  <script src="js/voder.js"></script>
-  <script src="js/consoleDisplay.js"></script>
+  <script src="bundle.js"></script>
 </body>
 </html>

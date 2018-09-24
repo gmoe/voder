@@ -1,0 +1,81 @@
+{
+  "buttons": [
+    {
+      "boundKey": "a",
+      "displayName": "A",
+      "hitRegionName": "band0",
+      "buttonBounds": [2, 40, 36, 90],
+      "textBounds": [8, 95]
+    },
+    {
+      "boundKey": "s",
+      "displayName": "S",
+      "hitRegionName": "band1",
+      "buttonBounds": [42, 30, 36, 90],
+      "textBounds": [52, 85]
+    },
+    {
+      "boundKey": "d",
+      "displayName": "D",
+      "hitRegionName": "band2",
+      "buttonBounds": [82, 20, 36, 90],
+      "textBounds": [92, 75]
+    },
+    {
+      "boundKey": "f",
+      "displayName": "F",
+      "hitRegionName": "band3",
+      "buttonBounds": [122, 30, 36, 90],
+      "textBounds": [134, 85]
+    },
+    {
+      "boundKey": "v",
+      "displayName": "V",
+      "hitRegionName": "band4",
+      "buttonBounds": [162, 60, 36, 90],
+      "textBounds": [168, 115]
+    },
+    {
+      "boundKey": " ",
+      "displayName": "Space",
+      "hitRegionName": "noise_band",
+      "buttonBounds": [42, 240, 120, 36],
+      "textBounds": [54, 268]
+    },
+    {
+      "boundKey": "b",
+      "displayName": "B",
+      "hitRegionName": "band5",
+      "buttonBounds": [222, 60, 36, 90],
+      "textBounds": [234, 115]
+    },
+    {
+      "boundKey": "h",
+      "displayName": "H",
+      "hitRegionName": "band6",
+      "buttonBounds": [262, 30, 36, 90],
+      "textBounds": [269, 85]
+    },
+    {
+      "boundKey": "j",
+      "displayName": "J",
+      "hitRegionName": "band7",
+      "buttonBounds": [302, 20, 36, 90],
+      "textBounds": [312, 75]
+    },
+    {
+      "boundKey": "k",
+      "displayName": "K",
+      "hitRegionName": "band8",
+      "buttonBounds": [342, 30, 36, 90],
+      "textBounds": [352, 85]
+    },
+    {
+      "boundKey": "l",
+      "displayName": "L",
+      "hitRegionName": "band9",
+      "buttonBounds": [382, 40, 36, 90],
+      "textBounds": [394, 95]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "voder",
+  "version": "1.0.0",
+  "description": "A web audio emulation of the Voder, an early example of speech synthesis that debuted at the 1939 World's Fair.",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "make-dist": "mkdir -p dist && cp index.html favicon.ico img/ fonts/ dist/",
+    "build-js": "browserify -e js/main.js -o dist/bundle.js",
+    "build": "npm run clean & npm run make-dist & npm run build-js",
+    "watch-dist": "cpx '{img,fonts,css}/*' dist -w -v & cpx '*.{html,ico}' dist -w -v",
+    "watch-js": "watchify -v --debug js/main.js -o dist/bundle.js",
+    "watch": "npm run watch-dist & npm run watch-js",
+    "serve": "npm run watch & http-server dist",
+    "deploy": "npm run build && gh-pages -d dist -o origin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gmoe/voder.git"
+  },
+  "keywords": [
+    "voder",
+    "web audio",
+    "speech synthesis",
+    "digital humanities"
+  ],
+  "author": "gmoe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gmoe/voder/issues"
+  },
+  "homepage": "https://github.com/gmoe/voder#readme",
+  "devDependencies": {
+    "browserify": "^16.2.2",
+    "cpx": "^1.5.0",
+    "gh-pages": "^2.0.0",
+    "http-server": "^0.11.1",
+    "watchify": "^3.11.0"
+  }
+}
