@@ -1,19 +1,31 @@
-const buttonLayout = require('./buttons.json').buttons;
 const Synthesis = require( "./synthesis.js");
 const VoderConsole = require("./consoleDisplay.js");
+const Buttons = require('./buttons.json').buttons;
 
 const canvasContainer = document.getElementById('canvas-container');
 const canvas = document.getElementById('console-display');
 let touchPointButtonMap = {};
+let buttonLayout = [];
 
 function resizeCanvas() {
   canvas.width = canvasContainer.clientWidth;
   canvas.height = canvasContainer.clientHeight;
+  buttonLayout = Buttons.map((button) => {
+    const wRatio = canvasContainer.clientWidth;
+    const hRatio = canvasContainer.clientHeight;
+    const [x, y, w, h] = button.buttonBounds;
+    const [tX, tY] = button.textBounds;
+    return Object.assign({}, button, {
+      buttonBounds: [x * wRatio, y * hRatio, w * wRatio, h * hRatio],
+      textBounds: [tX * wRatio, tY * hRatio],
+    });
+  });
   VoderConsole.render(buttonLayout);
 }
 
 window.addEventListener('resize', resizeCanvas, false);
 window.addEventListener('orientationchange', resizeCanvas, false);
+resizeCanvas();
 
 window.addEventListener('keydown', function(event) {
   if (event.target === document.body) event.preventDefault();
@@ -40,43 +52,51 @@ canvas.addEventListener('mouseup', function(event) {
 canvas.addEventListener('touchstart', function(event) {
   const rect = canvas.getBoundingClientRect();
   for (let i = 0; i < event.touches.length; ++i) {
+    const touchX = (event.touches[i].clientX - rect.left) * (canvas.width / rect.width);
+    const touchY = (event.touches[i].clientY - rect.top) * (canvas.height / rect.height);;
     for (let j = 0; j < buttonLayout.length; ++j) {
       const [btnX, btnY, btnWidth, btnHeight] = buttonLayout[j].buttonBounds;
-      const touchX = event.touches[i].clientX - rect.left;
-      const touchY = event.touches[i].clientY - rect.top;
-      console.log(`btnX: ${btnX}, btnY: ${btnY}, btnW: ${btnWidth}, btnH: ${btnHeight}, tX: ${touchX}, tY: ${touchY}`);
       if ((touchX >= btnX && touchX <= btnX + btnWidth)
         && (touchY >= btnY && touchY <= btnY + btnHeight)) {
         touchPointButtonMap[event.touches[i].identifier] = buttonLayout[j].boundKey;
-        buttonsPressed[buttonLayout[j].boundKey] = true;
+        Synthesis.updateState({ [buttonLayout[j].boundKey]: true });
+        VoderConsole.updateState({ [buttonLayout[j].boundKey]: true });
+        VoderConsole.render(buttonLayout);
       }
     }
   }
-  requestAnimationFrame(renderConsole);
 });
 
 canvas.addEventListener('touchend', function(event) {
   for (let i = 0; i < event.changedTouches.length; ++i) {
-    buttonsPressed[touchPointButtonMap[event.changedTouches[i].identifier]] = false;
+    Synthesis.updateState({ [touchPointButtonMap[event.changedTouches[i].identifier] ]: false });
+    VoderConsole.updateState({ [touchPointButtonMap[event.changedTouches[i].identifier] ]: false });
+    VoderConsole.render(buttonLayout);
     touchPointButtonMap[event.changedTouches[i].identifier] = '';
   }
-  requestAnimationFrame(renderConsole);
 });
 
 canvas.addEventListener('touchcancel', function(event) {
   touchPointButtonMap = {};
-  buttonsPressed = {};
-  requestAnimationFrame(renderConsole);
+  Synthesis.clearState();
+  VoderConsole.clearState();
+  VoderConsole.render(buttonLayout);
 });
 
 document.querySelector('#start-audio-btn').addEventListener('click', function() {
   Synthesis.initialize();
-  VoderConsole.render(buttonLayout);
   document.querySelector('#start-audio-overlay').style = 'animation-name: disappear;';
 });
 
 document.querySelector('#start-audio-overlay').addEventListener('animationend', function() {
   this.remove();
+});
+
+// Disable long-press context menu on canvas
+canvas.addEventListener('contextmenu', function(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  return false;
 });
 
 // Re-render after font file loads
