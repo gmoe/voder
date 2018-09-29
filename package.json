@@ -7,10 +7,12 @@
     "clean": "rm -rf dist",
     "make-dist": "mkdir -p dist && cp index.html favicon.ico img/ fonts/ dist/",
     "build-js": "browserify -e js/main.js -o dist/bundle.js",
-    "build": "npm run clean & npm run make-dist & npm run build-js",
-    "watch-dist": "cpx '{img,fonts,css}/*' dist -w -v & cpx '*.{html,ico}' dist -w -v",
+    "build-scss": "node-sass --output-style='compressed' scss/styles.scss dist/style.css",
+    "build": "npm run clean & npm run make-dist & npm run build-js & npm run build-scss",
+    "watch-dist": "cpx '{img,fonts}/*' dist -w -v & cpx '*.{html,ico}' dist -w -v",
     "watch-js": "watchify -v --debug js/main.js -o dist/bundle.js",
-    "watch": "npm run watch-dist & npm run watch-js",
+    "watch-scss": "node-sass --watch --source-map-embed 'scss/styles.scss' './dist/style.css'",
+    "watch": "npm run watch-dist & npm run watch-js & npm run watch-scss",
     "serve": "npm run watch & http-server dist",
     "deploy": "npm run build && gh-pages -d dist -o origin"
   },
@@ -35,6 +37,7 @@
     "cpx": "^1.5.0",
     "gh-pages": "^2.0.0",
     "http-server": "^0.11.1",
+    "node-sass": "^4.9.3",
     "watchify": "^3.11.0"
   }
 }
