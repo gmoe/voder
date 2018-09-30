@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf dist",
-    "make-dist": "mkdir -p dist && cp index.html favicon.ico img/ fonts/ dist/",
+    "make-dist": "mkdir -p dist && cpx '{img,fonts}/*' dist -v && cpx '*.{html,ico}' dist -v",
     "build:js": "browserify -e js/main.js -o dist/bundle.js",
     "build:scss": "node-sass --output-style='compressed' scss/styles.scss dist/style.css",
-    "build": "npm run clean & npm run make-dist & npm run build:js & npm run build:scss",
+    "build": "npm run clean && npm run make-dist && npm run build:js && npm run build:scss",
     "watch:dist": "cpx '{img,fonts}/*' dist -w -v & cpx '*.{html,ico}' dist -w -v",
     "watch:js": "watchify -v --debug js/main.js -o dist/bundle.js",
     "watch:scss": "npm run build:scss && node-sass --watch --source-map-embed 'scss/styles.scss' 'dist/style.css'",
