@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
 
   <title>Voder Speech Synthesizer (1939)</title>
 
   <link rel="preload" as "script" href="bundle.js">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
-  <link rel="preload" as="style" href="css/style.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" as="style" href="style.css">
+  <link rel="stylesheet" href="style.css">
   <link rel="icon" sizes="16x16 32x32" href="favicon.ico">
   <link rel="apple-touch-icon-precomposed" href="img/favicon-152.png">
   <meta name="msapplication-TileColor" content="340f20">
@@ -55,7 +55,8 @@
       </div>
       <p>
         Try create vowel formants pressing the button combinations below on
-        your keyboard:
+        your keyboard, or if you are using a mobile device scroll down and tap
+        console display:
       </p>
       <ul>
         <li><kbd>D + V + J</kbd>: [ɑ] as in "father"</li>
@@ -105,6 +106,9 @@
       </canvas>
       <div id="start-audio-overlay">
         <button id="start-audio-btn">Start</button>
+        <span id="mobile-warning">
+          Rotate your device to landscape for an optimal experience.
+        </span>
       </div>
     </section>
     <footer>
