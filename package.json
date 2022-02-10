@@ -37,7 +37,7 @@
     "cpx": "^1.5.0",
     "gh-pages": "^2.0.0",
     "http-server": "^0.11.1",
-    "node-sass": "^4.9.3",
+    "node-sass": "^7.0.0",
     "watchify": "^3.11.0"
   }
 }
