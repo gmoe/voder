@@ -1,6 +1,14 @@
-const Synthesis = require( "./synthesis.js");
-const VoderConsole = require("./consoleDisplay.js");
-const Buttons = require('./buttons.json').buttons;
+import Synthesis from './synthesis';
+import VoderConsole from './consoleDisplay';
+import Buttons from './buttons';
+
+import '../scss/styles.scss';
+// Copy over images to build folder
+import '../img/favicon.ico';
+import '../img/favicon-152.png';
+import '../img/favicon-144.png';
+import '../img/logo_final.svg';
+import '../img/console_operator.svg';
 
 const canvasContainer = document.getElementById('canvas-container');
 const canvas = document.getElementById('console-display');

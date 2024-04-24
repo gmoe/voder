@@ -2,19 +2,11 @@
   "name": "voder",
   "version": "1.0.0",
   "description": "A web audio emulation of the Voder, an early example of speech synthesis that debuted at the 1939 World's Fair.",
-  "main": "index.js",
-  "scripts": {
-    "clean": "rm -rf dist",
-    "make-dist": "mkdir -p dist && cpx '{img,fonts}/*' dist -v && cpx '*.{html,ico}' dist -v",
-    "build:js": "browserify -e js/main.js -o dist/bundle.js",
-    "build:scss": "node-sass --output-style='compressed' scss/styles.scss dist/style.css",
-    "build": "npm run clean && npm run make-dist && npm run build:js && npm run build:scss",
-    "watch:dist": "cpx '{img,fonts}/*' dist -w -v & cpx '*.{html,ico}' dist -w -v",
-    "watch:js": "watchify -v --debug js/main.js -o dist/bundle.js",
-    "watch:scss": "npm run build:scss && node-sass --watch --source-map-embed 'scss/styles.scss' 'dist/style.css'",
-    "watch": "npm run watch:dist & npm run watch:js & npm run watch:scss",
-    "serve": "npm run watch & http-server dist",
-    "deploy": "npm run build && gh-pages -d dist -o origin"
+  "homepage": "https://github.com/gmoe/voder#readme",
+  "author": "Griffin Moe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gmoe/voder/issues"
   },
   "repository": {
     "type": "git",
@@ -26,18 +18,26 @@
     "speech synthesis",
     "digital humanities"
   ],
-  "author": "gmoe",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/gmoe/voder/issues"
+  "engines": {
+    "node": ">=20"
   },
-  "homepage": "https://github.com/gmoe/voder#readme",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack build --mode development",
+    "build:prod": "webpack build --mode production",
+    "start": "webpack serve --mode development",
+    "start:prod": "webpack serve --mode production",
+    "deploy": "npm run build:prod && gh-pages -d dist -o origin"
+  },
   "devDependencies": {
-    "browserify": "^16.2.2",
-    "cpx": "^1.5.0",
-    "gh-pages": "^2.0.0",
-    "http-server": "^0.11.1",
-    "node-sass": "^4.9.3",
-    "watchify": "^3.11.0"
+    "css-loader": "^7.1.1",
+    "gh-pages": "^6.1.1",
+    "html-webpack-plugin": "^5.6.0",
+    "mini-css-extract-plugin": "^2.9.0",
+    "sass": "^1.75.0",
+    "sass-loader": "^14.2.1",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
   }
 }
