@@ -12,7 +12,7 @@ Voder.
 Local development requires [npm][npm] and is as easy as:
 
 ```sh
-npm run serve
+npm start
 ```
 
 This command will dynamically rebuild the app on source file changes. If you

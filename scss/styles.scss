@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Poiret One';
-  src: url('../fonts/PoiretOne-Regular.ttf') format('woff'),
-       url('../fonts/PoiretOne-Regular.woff') format('truetype');
+  src: url('../fonts/PoiretOne-Regular.woff') format('woff'),
+       url('../fonts/PoiretOne-Regular.ttf') format('truetype');
 }
 
 body {
@@ -75,7 +75,7 @@ kbd {
   padding-bottom: 5px;
   padding-left: 10px;
   padding-right: 10px;
-  background: #ccc;
+  border: 2px solid #ccc;
   border-radius: 2px;
 }
 

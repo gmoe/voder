@@ -23,10 +23,11 @@ function resizeCanvas() {
     const hRatio = canvasContainer.clientHeight;
     const [x, y, w, h] = button.buttonBounds;
     const [tX, tY] = button.textBounds;
-    return Object.assign({}, button, {
+    return {
+      ...button,
       buttonBounds: [x * wRatio, y * hRatio, w * wRatio, h * hRatio],
       textBounds: [tX * wRatio, tY * hRatio],
-    });
+    };
   });
   VoderConsole.render(buttonLayout);
 }
@@ -49,12 +50,6 @@ window.addEventListener('keyup', function(event) {
   Synthesis.updateState({ [eventKey]: false });
   VoderConsole.updateState({ [eventKey]: false });
   VoderConsole.render(buttonLayout);
-});
-
-canvas.addEventListener('mousedown', function(event) {
-});
-
-canvas.addEventListener('mouseup', function(event) {
 });
 
 canvas.addEventListener('touchstart', function(event) {
@@ -108,4 +103,12 @@ canvas.addEventListener('contextmenu', function(event) {
 });
 
 // Re-render after font file loads
-setTimeout(() => VoderConsole.render(buttonLayout), 1000);
+const poiretOneFont = new FontFace('Poiret One', 'url(/assets/PoiretOne-Regular.woff)');
+poiretOneFont.load().then(
+  () => {
+    VoderConsole.render(buttonLayout);
+  },
+  (error) => {
+    console.error(error);
+  }
+);

@@ -8,7 +8,7 @@ module.exports = {
     clean: true,
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
-    assetModuleFilename: 'img/[name][ext]',
+    assetModuleFilename: 'assets/[name][ext]',
   },
   module: {
     rules: [
