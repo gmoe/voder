@@ -9,6 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
     assetModuleFilename: 'assets/[name][ext]',
+    publicPath: process.env.GH_PAGES_DEPLOY ? 'https://griffin.moe/voder/' : '/',
   },
   module: {
     rules: [
