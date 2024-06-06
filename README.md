@@ -26,4 +26,4 @@ is similarly easy:
 npm run deploy
 ```
 
-[nmv]: https://github.com/nvm-sh/nvm
+[nvm]: https://github.com/nvm-sh/nvm
