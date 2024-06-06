@@ -9,10 +9,13 @@ Voder.
 
 # Development
 
-Local development requires [npm][npm] and is as easy as:
+It's recommended that you use [NVM][nvm] to manage your Node version, but really
+anything past v18.x should work just fine.
 
 ```sh
-npm start
+# brew install node nvm (or whatever package manager is relevant to your system)
+nvm install ; nvm use
+npm install ; npm start
 ```
 
 This command will dynamically rebuild the app on source file changes. If you
@@ -23,4 +26,4 @@ is similarly easy:
 npm run deploy
 ```
 
-[npm]: https://www.npmjs.com/
+[nmv]: https://github.com/nvm-sh/nvm
