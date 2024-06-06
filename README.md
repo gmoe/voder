@@ -9,8 +9,7 @@ Voder.
 
 # Development
 
-It's recommended that you use [NVM][nvm] to manage your Node version, but really
-anything past v18.x should work just fine.
+It's recommended that you use [NVM][nvm] to manage your Node version:
 
 ```sh
 # brew install node nvm (or whatever package manager is relevant to your system)
