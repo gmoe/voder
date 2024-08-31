@@ -36,7 +36,7 @@ window.addEventListener('resize', resizeCanvas, false);
 window.addEventListener('orientationchange', resizeCanvas, false);
 resizeCanvas();
 
-window.addEventListener('keydown', function(event) {
+window.addEventListener('keydown', (event) => {
   if (event.target === document.body) event.preventDefault();
   const eventKey = event.key || String.fromCharCode(event.keyCode).toLowerCase();
   Synthesis.updateState({ [eventKey]: true });
@@ -44,7 +44,7 @@ window.addEventListener('keydown', function(event) {
   VoderConsole.render(buttonLayout);
 });
 
-window.addEventListener('keyup', function(event) {
+window.addEventListener('keyup', (event) => {
   if (event.target === document.body) event.preventDefault();
   const eventKey = event.key || String.fromCharCode(event.keyCode).toLowerCase();
   Synthesis.updateState({ [eventKey]: false });
@@ -52,12 +52,12 @@ window.addEventListener('keyup', function(event) {
   VoderConsole.render(buttonLayout);
 });
 
-canvas.addEventListener('touchstart', function(event) {
+canvas.addEventListener('touchstart', (event) => {
   const rect = canvas.getBoundingClientRect();
-  for (let i = 0; i < event.touches.length; ++i) {
+  for (let i = 0; i < event.touches.length; i += 1) {
     const touchX = (event.touches[i].clientX - rect.left) * (canvas.width / rect.width);
-    const touchY = (event.touches[i].clientY - rect.top) * (canvas.height / rect.height);;
-    for (let j = 0; j < buttonLayout.length; ++j) {
+    const touchY = (event.touches[i].clientY - rect.top) * (canvas.height / rect.height);
+    for (let j = 0; j < buttonLayout.length; j += 1) {
       const [btnX, btnY, btnWidth, btnHeight] = buttonLayout[j].buttonBounds;
       if ((touchX >= btnX && touchX <= btnX + btnWidth)
         && (touchY >= btnY && touchY <= btnY + btnHeight)) {
@@ -70,33 +70,33 @@ canvas.addEventListener('touchstart', function(event) {
   }
 });
 
-canvas.addEventListener('touchend', function(event) {
-  for (let i = 0; i < event.changedTouches.length; ++i) {
-    Synthesis.updateState({ [touchPointButtonMap[event.changedTouches[i].identifier] ]: false });
-    VoderConsole.updateState({ [touchPointButtonMap[event.changedTouches[i].identifier] ]: false });
+canvas.addEventListener('touchend', (event) => {
+  for (let i = 0; i < event.changedTouches.length; i += 1) {
+    Synthesis.updateState({ [touchPointButtonMap[event.changedTouches[i].identifier]]: false });
+    VoderConsole.updateState({ [touchPointButtonMap[event.changedTouches[i].identifier]]: false });
     VoderConsole.render(buttonLayout);
     touchPointButtonMap[event.changedTouches[i].identifier] = '';
   }
 });
 
-canvas.addEventListener('touchcancel', function(event) {
+canvas.addEventListener('touchcancel', () => {
   touchPointButtonMap = {};
   Synthesis.clearState();
   VoderConsole.clearState();
   VoderConsole.render(buttonLayout);
 });
 
-document.querySelector('#start-audio-btn').addEventListener('click', function() {
+document.querySelector('#start-audio-btn').addEventListener('click', () => {
   Synthesis.initialize();
   document.querySelector('#start-audio-overlay').style = 'animation-name: disappear;';
 });
 
-document.querySelector('#start-audio-overlay').addEventListener('animationend', function() {
-  this.remove();
+document.querySelector('#start-audio-overlay').addEventListener('animationend', (event) => {
+  event.target.remove();
 });
 
 // Disable long-press context menu on canvas
-canvas.addEventListener('contextmenu', function(event) {
+canvas.addEventListener('contextmenu', (event) => {
   event.preventDefault();
   event.stopPropagation();
   return false;
@@ -105,13 +105,8 @@ canvas.addEventListener('contextmenu', function(event) {
 // Re-render after font file loads
 const poiretOneFont = new FontFace(
   'Poiret One',
-  `url(${__webpack_public_path__}/assets/PoiretOne-Regular.woff)`
+  `url(${__webpack_public_path__}/assets/PoiretOne-Regular.woff)`,
 );
-poiretOneFont.load().then(
-  () => {
-    VoderConsole.render(buttonLayout);
-  },
-  (error) => {
-    console.error(error);
-  }
-);
+poiretOneFont.load().then(() => {
+  VoderConsole.render(buttonLayout);
+});

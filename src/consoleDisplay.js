@@ -1,4 +1,3 @@
-const canvasContainer = document.getElementById('canvas-container');
 const canvas = document.getElementById('console-display');
 const ctx = canvas.getContext('2d');
 

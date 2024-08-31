@@ -27,12 +27,17 @@
     "build:prod": "webpack build --mode production",
     "start": "webpack serve --mode development",
     "start:prod": "webpack serve --mode production",
-    "deploy": "GH_PAGES_DEPLOY=1 npm run build:prod && gh-pages -d dist -o origin"
+    "deploy": "GH_PAGES_DEPLOY=1 npm run build:prod && gh-pages -d dist -o origin",
+    "prepare": "husky"
   },
   "devDependencies": {
     "css-loader": "^7.1.1",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "gh-pages": "^6.1.1",
     "html-webpack-plugin": "^5.6.0",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.9",
     "mini-css-extract-plugin": "^2.9.0",
     "sass": "^1.75.0",
     "sass-loader": "^14.2.1",

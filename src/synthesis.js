@@ -38,7 +38,7 @@ function makeFormantNode(ctx, f1, f2) {
 function makeSibilanceNode(ctx) {
   const buffer = ctx.createBuffer(1, NOISE_BUFFER_SIZE, ctx.sampleRate);
   const data = buffer.getChannelData(0);
-  for (let i = 0; i < NOISE_BUFFER_SIZE; ++i) {
+  for (let i = 0; i < NOISE_BUFFER_SIZE; i += 1) {
     data[i] = Math.random();
   }
 
@@ -75,16 +75,16 @@ function makeSibilanceNode(ctx) {
 
 function initialize() {
   audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  audioNodes['a'] = makeFormantNode(audioCtx, 0, 225);
-  audioNodes['s'] = makeFormantNode(audioCtx, 225, 450);
-  audioNodes['d'] = makeFormantNode(audioCtx, 450, 700);
-  audioNodes['f'] = makeFormantNode(audioCtx, 700, 1000);
-  audioNodes['v'] = makeFormantNode(audioCtx, 1000, 1400);
-  audioNodes['b'] = makeFormantNode(audioCtx, 1400, 2000);
-  audioNodes['h'] = makeFormantNode(audioCtx, 2000, 2700);
-  audioNodes['j'] = makeFormantNode(audioCtx, 2700, 3800);
-  audioNodes['k'] = makeFormantNode(audioCtx, 3800, 5400);
-  audioNodes['l'] = makeFormantNode(audioCtx, 5400, 7500);
+  audioNodes.a = makeFormantNode(audioCtx, 0, 225);
+  audioNodes.s = makeFormantNode(audioCtx, 225, 450);
+  audioNodes.d = makeFormantNode(audioCtx, 450, 700);
+  audioNodes.f = makeFormantNode(audioCtx, 700, 1000);
+  audioNodes.v = makeFormantNode(audioCtx, 1000, 1400);
+  audioNodes.b = makeFormantNode(audioCtx, 1400, 2000);
+  audioNodes.h = makeFormantNode(audioCtx, 2000, 2700);
+  audioNodes.j = makeFormantNode(audioCtx, 2700, 3800);
+  audioNodes.k = makeFormantNode(audioCtx, 3800, 5400);
+  audioNodes.l = makeFormantNode(audioCtx, 5400, 7500);
   audioNodes[' '] = makeSibilanceNode(audioCtx);
 }
 
@@ -93,12 +93,12 @@ module.exports = {
   updateState(changes) {
     const [key] = Object.keys(changes);
     if (changes[key]) {
-      audioNodes[key] && audioNodes[key].start();
+      audioNodes[key]?.start();
     } else {
-      audioNodes[key] && audioNodes[key].stop();
+      audioNodes[key]?.stop();
     }
   },
   clearState() {
-    Object.keys(audioNodes).forEach(node => audioNodes[node].panic());
+    Object.keys(audioNodes).forEach((node) => audioNodes[node].panic());
   },
 };
