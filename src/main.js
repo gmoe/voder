@@ -105,7 +105,7 @@ canvas.addEventListener('contextmenu', (event) => {
 // Re-render after font file loads
 const poiretOneFont = new FontFace(
   'Poiret One',
-  `url(${__webpack_public_path__}/assets/PoiretOne-Regular.woff)`,
+  `url(${__webpack_public_path__}assets/PoiretOne-Regular.woff)`,
 );
 poiretOneFont.load().then(() => {
   VoderConsole.render(buttonLayout);

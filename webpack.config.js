@@ -9,7 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
     assetModuleFilename: 'assets/[name][ext]',
-    publicPath: process.env.GH_PAGES_DEPLOY ? 'https://griffin.moe/voder/' : '/',
+    publicPath: process.env.GH_PAGES_DEPLOY ? 'https://griffin.moe/voder/' : undefined,
   },
   module: {
     rules: [
@@ -34,4 +34,16 @@ module.exports = {
       favicon: path.resolve(__dirname, 'img', 'favicon.ico'),
     }),
   ],
+  devServer: {
+    static: [
+      {
+        directory: path.join(__dirname, 'fonts'),
+        publicPath: '/assets',
+      },
+      {
+        directory: path.join(__dirname, 'img'),
+        publicPath: '/assets',
+      },
+    ],
+  },
 };
